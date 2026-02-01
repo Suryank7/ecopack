@@ -1,0 +1,80 @@
+.env
+.env.*
+!.env.example
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# IDEs
+.vscode/
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Data (ML datasets)
+data/
+datasets/
+*.csv
+*.tsv
+*.parquet
+*.h5
+*.hdf5
+
+# Models / checkpoints
+models/
+checkpoints/
+*.pkl
+*.joblib
+*.pt
+*.pth
+*.onnx
+
+# ML experiment tracking
+mlruns/
+wandb/
+tensorboard/
+runs/
+
+# Secrets
+.env
+.env.*
+*.key
+*.pem
+secrets/
+config/secrets.yml
+
+# Build / distribution
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Temporary / outputs
+outputs/
+results/
+predictions/
+*.tmp
+*.swp

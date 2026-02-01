@@ -1,0 +1,1 @@
+Material_Type\nTensile_Strength_MPa\nWeight_Capacity_kg\nBiodegradability_Score\nCO2_Emission_Score\nRecyclability_Percent\nMoisture_Barrier_Grade\nAI_Recommendation
