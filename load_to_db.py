@@ -4,7 +4,7 @@ from psycopg2 import extras
 import os
 from dotenv import load_dotenv
 
-# Load database credentials from .env file
+# Load database credentials
 load_dotenv()
 
 DB_NAME = os.getenv("DB_NAME", "ecopack_db")
@@ -14,7 +14,7 @@ DB_HOST = os.getenv("DB_HOST", "localhost")
 DB_PORT = os.getenv("DB_PORT", "5432")
 
 def load_data():
-    # 1. Load the processed CSV
+    # Load CSV file
     csv_path = 'materials_processed_milestone1.csv'
     if not os.path.exists(csv_path):
         print(f"Error: {csv_path} not found. Run process_data.py first.")
@@ -23,7 +23,7 @@ def load_data():
     df = pd.read_csv(csv_path)
     print(f"Loaded {len(df)} records from {csv_path}")
 
-    # 2. Connect to PostgreSQL
+    # Connect to PostgreSQL
     try:
         conn = psycopg2.connect(
             dbname=DB_NAME,
@@ -34,19 +34,17 @@ def load_data():
         )
         conn.autocommit = True
         cur = conn.cursor()
-        print("Connected to PostgreSQL successfully.")
+        print("Connected to PostgreSQL")
 
-        # 3. Initialize Schema
-        print("Initializing database schema...")
+        # Create tables
+        print("Creating database schema...")
         with open('schema.sql', 'r') as f:
             cur.execute(f.read())
-        print("Schema initialized.")
+        print("Schema created")
 
-        # 4. Ingest Data
-        print("Ingesting data into 'materials' table...")
+        # Prepare data for insertion
+        print("Loading data into materials table...")
         
-        # Prepare the data for insertion
-        # Mapping CSV columns to DB columns
         data_to_insert = [
             (
                 row['Material_Type'],
@@ -75,14 +73,14 @@ def load_data():
 
         extras.execute_values(cur, insert_query, data_to_insert)
         
-        print(f"Successfully ingested {len(data_to_insert)} records.")
+        print(f"Successfully loaded {len(data_to_insert)} records")
 
         cur.close()
         conn.close()
-        print("Database connection closed.")
+        print("Database connection closed")
 
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"Error: {e}")
 
 if __name__ == "__main__":
     load_data()

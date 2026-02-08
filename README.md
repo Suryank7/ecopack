@@ -1,59 +1,93 @@
 # EcoPackAI - Sustainable Packaging Recommendation System
 
-EcoPackAI is an AI-powered platform designed to recommend optimal eco-friendly packaging materials based on product attributes, sustainability parameters, and cost efficiency.
+AI-powered platform to recommend eco-friendly packaging materials based on sustainability metrics.
 
-## Project Structure
-*   `app.py`: Main Flask application (Backend API & Routing).
-*   `templates/`: HTML files (`home.html`, `index.html`) for the frontend.
-*   `static/`: CSS styling, JavaScript logic, and assets.
-*   `utils/model.py`: Core logic including Physics Simulation and ML Predictions.
-*   `models/`: Directory where trained ML models are saved.
-*   `train_models.py`: Script for training the AI models.
-*   `process_data.py`: Script for data cleaning and feature engineering.
+## Features
 
-## Prerequisites
-Ensure have Python installed. Install dependencies:
+- **Data Processing**: Cleans and engineers features from 5,000+ material records
+- **ML Models**: Predicts CO2 emissions and cost efficiency (R² > 97%)
+- **Database**: PostgreSQL integration for scalable data storage
+- **Visualizations**: Performance charts and material comparisons
+
+## Quick Start
+
+### 1. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-## How to Run
-
-### Step 1: Start the Server
-Launch the Flask application:
+### 2. Run the Pipeline
 
 ```bash
-python app.py
+# Process data
+python process_data.py
+
+# Train models
+python train_models.py
+
+# Load to database (optional)
+python load_to_db.py
+
+# Generate reports
+python evaluate_models.py
 ```
 
-### Step 2: Use the Application
-1.  Open your browser and go to `http://127.0.0.1:5000/`.
-2.  Click **"Get Started"** on the landing page.
-3.  Open the **Sidebar Menu (☰)** in the top-left.
-4.  Enter product details (Weight, Fragility, Shelf Life).
-5.  Click **"Find Best Material"** to see AI recommendations.
+### 3. Database Setup (Optional)
 
----
+1. Install PostgreSQL
+2. Create database: `CREATE DATABASE ecopack_db;`
+3. Copy `.env.example` to `.env` and add credentials
+4. Run `python load_to_db.py`
 
-## Key Features (Week 6 Update)
+## Project Structure
 
-### 🧠 Physics-Based Expert System
-The AI now understands physics. It creates dynamic material recommendations based on:
-*   **Weight vs. Strength:** Heavy items get strong materials (Aluminum, Wood). Light items get sustainable ones (Mushroom, Bio).
-*   **Shelf Life:** Perishable goods get moisture-resistant packaging.
-*   **Eco-Bonus:** Sustainable materials like Cardboard get a boost for standard use cases.
+```
+EcoPackAI/
+├── process_data.py          # Data processing and feature engineering
+├── train_models.py          # Model training (RF, XGBoost, LightGBM, CatBoost)
+├── load_to_db.py            # PostgreSQL data loading
+├── evaluate_models.py       # Model evaluation and visualization
+├── schema.sql               # Database schema
+├── models/                  # Trained models
+├── reports/                 # Generated charts
+└── requirements.txt         # Python dependencies
+```
 
-### 🎨 Premium UI/UX (Overhaul)
-*   **Light Mode Theme:** Fresh Mint & Emerald color palette.
-*   **Animated Landing Page:** with floating leaf effects.
-*   **Visualizations:** Radar Charts, Cost/CO2 Bar Charts, and Suitability Pie Charts.
+## Model Performance
 
-## Project Status
-*   ✅ **Milestone 1:** Data Foundation.
-*   ✅ **Milestone 2:** AI Models (Cost & CO2).
-*   ✅ **Milestone 3:** Flask API (Backend).
-*   ✅ **Milestone 4 & 5:** Frontend Dashboard (UI).
-*   ✅ **Milestone 6:** Physics Logic & Expert System (Final Polish).
+| Model | CO2 R² | Cost Efficiency R² |
+|-------|--------|-------------------|
+| Random Forest | 0.9693 | 0.9988 |
+| XGBoost | 0.9703 | 0.9988 |
+| **LightGBM** | **0.9703** | **0.9993** |
+| CatBoost | 0.9693 | 0.9988 |
+
+## Top Sustainable Materials
+
+1. Mushroom Mycelium
+2. Seaweed-Based Packaging
+3. Bamboo Fiber
+4. Recycled Paper
+5. Bioplastic (PLA)
+
+## Dataset
+
+Source: Ecopack Sustainable Packaging Dataset (5,000 materials)
+
+**Features:**
+- Material Type
+- Tensile Strength
+- Weight Capacity
+- Biodegradability Score
+- CO2 Emission Score
+- Recyclability Percentage
+- Moisture Barrier Grade
+
+## License
+
+MIT License
+
+## Contributing
+
+Pull requests welcome. For major changes, please open an issue first.

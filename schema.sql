@@ -1,11 +1,11 @@
--- Database Schema for EcoPackAI (Updated for 5000-row dataset)
+-- EcoPackAI Database Schema
 
--- Check if table exists and drop it (for development iteration)
-DROP TABLE IF EXISTS material_suitability;
-DROP TABLE IF EXISTS materials;
-DROP TABLE IF EXISTS products;
+-- Drop existing tables
+DROP TABLE IF EXISTS material_suitability CASCADE;
+DROP TABLE IF EXISTS materials CASCADE;
+DROP TABLE IF EXISTS products CASCADE;
 
--- Table to store material properties
+-- Materials table
 CREATE TABLE materials (
     id SERIAL PRIMARY KEY,
     material_type VARCHAR(255) NOT NULL,
@@ -22,20 +22,21 @@ CREATE TABLE materials (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Table to store product categories (for future mapping)
+-- Products table
 CREATE TABLE products (
     id SERIAL PRIMARY KEY,
-    product_category VARCHAR(255) NOT NULL, 
+    product_category VARCHAR(255) NOT NULL,
     packaging_requirement VARCHAR(500),
     typical_weight_kg FLOAT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Junction table for material suitability per product (for future use)
+-- Material-Product mapping table
 CREATE TABLE material_suitability (
-    material_id INT REFERENCES materials(id),
-    product_id INT REFERENCES products(id),
+    material_id INT REFERENCES materials(id) ON DELETE CASCADE,
+    product_id INT REFERENCES products(id) ON DELETE CASCADE,
     suitability_override FLOAT,
     reason TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (material_id, product_id)
 );

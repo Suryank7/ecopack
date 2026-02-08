@@ -1,80 +1,62 @@
-.env
-.env.*
-!.env.example
-
-# Python cache
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
-# Virtual environments
+# Virtual Environment
 venv/
-.venv/
 env/
 ENV/
+.venv
 
-# Jupyter
-.ipynb_checkpoints/
-*.ipynb
-
-# IDEs
+# IDE
 .vscode/
 .idea/
-*.iml
+*.swp
+*.swo
+*~
 
-# OS files
+# Environment Variables
+.env
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Reports and Temporary Files
+reports/
+data_processing_report.txt
+model_training_report.txt
+_cols.txt
+cols_full.txt
+
+# Models (optional - uncomment if models are too large)
+# models/*.pkl
+
+# OS
 .DS_Store
 Thumbs.db
 
 # Logs
 *.log
 
-# Data (ML datasets)
-data/
-datasets/
-*.csv
-*.tsv
-*.parquet
-*.h5
-*.hdf5
-
-# Models / checkpoints
-models/
-checkpoints/
-*.pkl
-*.joblib
-*.pt
-*.pth
-*.onnx
-
-# ML experiment tracking
-mlruns/
-wandb/
-tensorboard/
-runs/
-
-# Secrets
-.env
-.env.*
-*.key
-*.pem
-secrets/
-config/secrets.yml
-
-# Build / distribution
-build/
-dist/
-*.egg-info/
-.eggs/
-
-# Testing / coverage
-.pytest_cache/
-.coverage
-htmlcov/
-
-# Temporary / outputs
-outputs/
-results/
-predictions/
-*.tmp
-*.swp
+# Session files
+*.session.sql
