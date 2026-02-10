@@ -60,3 +60,8 @@ Thumbs.db
 
 # Session files
 *.session.sql
+
+RENDER_DEPLOYMENT.md
+POSTGRESQL_SETUP.md
+GITHUB_SETUP.md
+DEPLOY_QUICK.md
