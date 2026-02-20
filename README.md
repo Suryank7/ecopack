@@ -1,4 +1,4 @@
-#  EcoPackAI — Sustainable Packaging Recommendation System
+# EcoPackAI — Sustainable Packaging Recommendation System
 
 EcoPackAI is an AI-powered sustainability intelligence platform designed to recommend eco-friendly packaging materials using advanced feature engineering, machine learning models, and database-backed analytics.
 
@@ -6,7 +6,7 @@ The system evaluates packaging materials based on environmental impact, durabili
 
 ---
 
-#  Problem Statement
+# Problem Statement
 
 The packaging industry significantly contributes to global carbon emissions and environmental waste. Businesses often lack data-driven tools to evaluate sustainable alternatives.
 
@@ -21,7 +21,7 @@ This enables smarter, greener packaging decisions.
 
 ---
 
-#  System Architecture Overview
+# System Architecture Overview
 
 EcoPackAI follows a structured ML pipeline:
 
@@ -36,7 +36,7 @@ The architecture supports scalability and backend integration.
 
 ---
 
-#  Data Intelligence & Processing
+# Data Intelligence & Processing
 
 ## Dataset Overview
 - Total Records: 5,000 materials
@@ -58,7 +58,7 @@ These features allow the system to move beyond raw material attributes and quant
 
 ---
 
-#  Machine Learning Models
+# Machine Learning Models
 
 EcoPackAI uses ensemble learning techniques to achieve high predictive accuracy.
 
@@ -80,7 +80,7 @@ Both models achieve greater than 99% accuracy, making them suitable for producti
 
 ---
 
-#  Sustainability Rankings
+# Sustainability Rankings
 
 Based on composite scoring, the top sustainable materials identified include:
 
@@ -106,6 +106,7 @@ These materials consistently show low CO₂ emission scores and high biodegradab
 ```bash
 pip install pandas numpy scikit-learn xgboost joblib psycopg2-binary python-dotenv matplotlib seaborn
 2. Run Full Pipeline
+Bash
 # Step 1 — Process raw data and engineer features
 python process_data.py
 
@@ -117,20 +118,23 @@ python load_to_db.py
 
 # Step 4 — Generate evaluation reports and visualizations
 python evaluate_models.py
- PostgreSQL Integration
+PostgreSQL Integration
 EcoPackAI integrates with PostgreSQL for structured storage and scalable querying.
 
 Create Database
+SQL
 CREATE DATABASE ecopack_db;
 Configure Environment Variables
 Create a .env file:
 
+Code snippet
 DB_NAME=ecopack_db
 DB_USER=postgres
 DB_PASSWORD=your_password
 DB_HOST=localhost
 DB_PORT=5432
 Load Data
+Bash
 python load_to_db.py
 The script:
 
@@ -142,18 +146,21 @@ Loads all processed material records
 
 Prepares database for analytical queries
 
- Example SQL Queries
+Example SQL Queries
 Top Sustainable Materials
+SQL
 SELECT material_type, material_suitability_score
 FROM materials
 ORDER BY material_suitability_score DESC
 LIMIT 10;
 Low CO₂ Materials
+SQL
 SELECT material_type, co2_emission_score
 FROM materials
 WHERE co2_emission_score < 5
 ORDER BY co2_emission_score;
- Project Structure
+Project Structure
+Plaintext
 EcoPackAI/
 ├── process_data.py
 ├── train_models.py
@@ -163,7 +170,7 @@ EcoPackAI/
 ├── models/
 ├── reports/
 └── requirements.txt
- Reporting & Visualization
+Reporting & Visualization
 Generated outputs include:
 
 Model performance comparison charts
@@ -176,7 +183,7 @@ Sustainability ranking visualizations
 
 All reports are stored inside the reports/ directory.
 
-🔧 Production Readiness
+ Production Readiness
 EcoPackAI is structured for production deployment:
 
 High-accuracy ML models
@@ -199,7 +206,7 @@ Carbon footprint simulation tool
 
 Enterprise procurement decision engine
 
- Future Enhancements
+Future Enhancements
 Real-time material recommendation API
 
 Carbon emission forecasting
@@ -212,5 +219,5 @@ Docker-based deployment
 
 Cloud integration (AWS/GCP/Azure)
 
- License
+License
 MIT License
