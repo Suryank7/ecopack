@@ -43,6 +43,8 @@ The architecture supports scalability and backend integration.
 - Total Features: 19
 - Duplicates Removed: 0
 
+---
+
 ## Engineered Sustainability Metrics
 
 To enhance predictive power, 6 new domain-specific features were created:
@@ -120,47 +122,55 @@ python load_to_db.py
 python evaluate_models.py
 PostgreSQL Integration
 EcoPackAI integrates with PostgreSQL for structured storage and scalable querying.
-
-Create Database
+```
+## 2. Create Database
 SQL
+```bash
 CREATE DATABASE ecopack_db;
 Configure Environment Variables
 Create a .env file:
-
-Code snippet
+```
+###Code snippet
+```bash
 DB_NAME=ecopack_db
 DB_USER=postgres
 DB_PASSWORD=your_password
 DB_HOST=localhost
 DB_PORT=5432
-Load Data
-Bash
+```
+##3. Load Data
+```Bash
 python load_to_db.py
 The script:
+```
+##4. Connects to PostgreSQL
 
-Connects to PostgreSQL
+##5. Executes schema.sql
 
-Executes schema.sql
+##6. Loads all processed material records
 
-Loads all processed material records
+##7. Prepares database for analytical queries
 
-Prepares database for analytical queries
+---
 
-Example SQL Queries
-Top Sustainable Materials
-SQL
+#Example SQL Queries
+##Top Sustainable Materials
+###SQL
+```bash
 SELECT material_type, material_suitability_score
 FROM materials
 ORDER BY material_suitability_score DESC
 LIMIT 10;
 Low CO₂ Materials
-SQL
-SELECT material_type, co2_emission_score
+```
+###SQL
+```bash SELECT material_type, co2_emission_score
 FROM materials
 WHERE co2_emission_score < 5
 ORDER BY co2_emission_score;
-Project Structure
-Plaintext
+```
+#Project Structure
+```bash
 EcoPackAI/
 ├── process_data.py
 ├── train_models.py
@@ -170,43 +180,44 @@ EcoPackAI/
 ├── models/
 ├── reports/
 └── requirements.txt
-Reporting & Visualization
+```
+#Reporting & Visualization
 Generated outputs include:
 
-Model performance comparison charts
+#Model performance comparison charts
 
-Feature importance graphs
+### Feature importance graphs
 
-CO₂ prediction error analysis
+### CO₂ prediction error analysis
 
-Sustainability ranking visualizations
+### Sustainability ranking visualizations
 
-All reports are stored inside the reports/ directory.
+### All reports are stored inside the reports/ directory.
 
- Production Readiness
+#Production Readiness
 EcoPackAI is structured for production deployment:
 
-High-accuracy ML models
+### High-accuracy ML models
 
-Modular data pipeline
+### Modular data pipeline
 
-Database-backed architecture
+### Database-backed architecture
 
-Environment-based configuration
+### Environment-based configuration
 
-Reproducible training workflow
+### Reproducible training workflow
 
-The system can be extended into:
+### The system can be extended into:
 
-REST API using Flask or FastAPI
+### REST API using Flask or FastAPI
 
-Sustainability analytics dashboard
+### Sustainability analytics dashboard
 
-Carbon footprint simulation tool
+### Carbon footprint simulation tool
 
-Enterprise procurement decision engine
+### Enterprise procurement decision engine
 
-Future Enhancements
+#Future Enhancements
 Real-time material recommendation API
 
 Carbon emission forecasting
@@ -215,9 +226,9 @@ Supplier integration
 
 Dashboard with business intelligence tools
 
-Docker-based deployment
+# Cloud-based deployment
 
-Cloud integration (AWS/GCP/Azure)
+Cloud deployment using render and render postgres database instance
 
-License
+#License
 MIT License
